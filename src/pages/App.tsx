@@ -14,12 +14,12 @@ function App() {
     <div className={AppStyles.main}>
       <div className={AppStyles.sidebarEsquerda}>
         <Formulario setAtividades={setAtividades}/>
-        <Cronometro selecionado={selecionado} setSelecionado={setSelecionado}/>
+        <Cronometro selecionado={selecionado}/>
       </div>
       <div className={AppStyles.sideBarDireita}>
         <Lista atividades={atividades} selecionado={selecionado} setSelecionado={setSelecionado}/>
-      </div>  
-    </div>        
+      </div>
+    </div>
   );
 }
 

@@ -20,10 +20,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        align-items: center; 
+        align-items: center;
         background-color: #EE6983;
         color: #FFF;
-        border-radius: 12px 12px;       
+        border-radius: 12px 12px;
     }
     .rodape{
         width: 100%;
@@ -31,13 +31,20 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        align-items: center;                       
+        align-items: center;
     }
 }
 
 .selecionado {
-    background: url("../../../assets/selecionado.png"); 
+    background: url("../../../assets/selecionado.svg");
     background-repeat: no-repeat;
-    background-size: 75px; 
-    background-position: 365px 75px;
+    background-size: 75px;
+    background-position: 100% 100%;
+}
+
+.finalizado {
+    background: url("../../../assets/finalizado.png");
+    background-repeat: no-repeat;
+    background-size: 75px;
+    background-position: 100% 100%;
 }

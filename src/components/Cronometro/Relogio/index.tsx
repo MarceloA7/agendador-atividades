@@ -1,21 +1,19 @@
-import { Atividade } from "../../../types/atividade";
-import Botao from "../../Botao";
+import { Tempo } from "../../../utils/Tempo";
 import RelogioStyles from "./RelogioStyles.module.scss"
 interface Props {
     label:string
-    selecionado:Atividade|undefined,
-    setSelecionado:React.Dispatch<React.SetStateAction<Atividade | undefined>>
+    valorRelogio:number
 }
-const Relogio = ({label, selecionado, setSelecionado}:Props) =>{
+const Relogio = ({label, valorRelogio}:Props) =>{
+
     return (
         <>
             <div className={RelogioStyles.label}>
                 <label>{label}</label>
             </div>
             <div className={RelogioStyles.relogio}>
-                <span>{selecionado?.tempo}</span>
+                <span>{Tempo.segundosEmHoraMinutosSegundos(valorRelogio)}</span>
             </div>
-            <Botao>Começar</Botao>            
         </>
 
     );

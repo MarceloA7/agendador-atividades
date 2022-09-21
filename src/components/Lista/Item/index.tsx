@@ -2,7 +2,7 @@ import { Atividade } from "../../../types/atividade"
 import ItemStyles from "./ItemStyles.module.scss"
 
 interface Props {
-    atividade:Atividade, 
+    atividade:Atividade,
     selecionado:Atividade | undefined,
     setSelecionado:React.Dispatch<React.SetStateAction<Atividade | undefined>>
 }
@@ -12,7 +12,7 @@ const Item = ({atividade, selecionado, setSelecionado}:Props) => {
         setSelecionado(atividade)
     }
     return(
-        <li className={`${ItemStyles.item} ${selecionado?.nome == atividade.nome? ItemStyles.selecionado : ""}`} onClick={selecionar}>
+        <li className={`${ItemStyles.item} ${selecionado?.nome === atividade.nome? ItemStyles.selecionado : ""}`} onClick={selecionar}>
             <div className={ItemStyles.cabecalho}>
                 <h2>{atividade.nome}</h2>
             </div>
