@@ -4,6 +4,7 @@ import Botao from '../Botao'
 import CampoTexto from '../CampoTexto'
 import CampoTime from '../CampoTime'
 import FormStyles from './FormStyles.module.scss'
+import { v4 as uuidv4 } from 'uuid';
 
 const Formulario = ({setAtividades}:{setAtividades:React.Dispatch<React.SetStateAction<Atividade[]>>}) => {
 
@@ -12,7 +13,15 @@ const Formulario = ({setAtividades}:{setAtividades:React.Dispatch<React.SetState
 
     function adicionarAtividade(evento:React.FormEvent) {
         evento.preventDefault();
-        setAtividades(atividadesAntigas => [...atividadesAntigas,{nome, tempo, selecionado:false}]);
+        setAtividades(atividadesAntigas => [
+            ...atividadesAntigas,
+            {
+                nome,
+                tempo,
+                selecionado:false,
+                completado:false,
+                id:uuidv4()
+            }]);
         setNome("");
         setTempo("");
     }

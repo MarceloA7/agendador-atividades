@@ -3,16 +3,12 @@ import ItemStyles from "./ItemStyles.module.scss"
 
 interface Props {
     atividade:Atividade,
-    selecionado:Atividade | undefined,
-    setSelecionado:React.Dispatch<React.SetStateAction<Atividade | undefined>>
+    selecionarAtividade:(atividade:Atividade) => void
 }
 
-const Item = ({atividade, selecionado, setSelecionado}:Props) => {
-    function selecionar(){
-        setSelecionado(atividade)
-    }
+const Item = ({atividade, selecionarAtividade}:Props) => {
     return(
-        <li className={`${ItemStyles.item} ${selecionado?.nome === atividade.nome? ItemStyles.selecionado : ""}`} onClick={selecionar}>
+        <li className={`${ItemStyles.item} ${atividade.selecionado? ItemStyles.selecionado : ""} ${atividade.completado ? ItemStyles.completado : ""}`} onClick={()=>selecionarAtividade(atividade)}>
             <div className={ItemStyles.cabecalho}>
                 <h2>{atividade.nome}</h2>
             </div>

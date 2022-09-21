@@ -5,7 +5,6 @@ interface Props {
     valorRelogio:number
 }
 const Relogio = ({label, valorRelogio}:Props) =>{
-
     return (
         <>
             <div className={RelogioStyles.label}>

@@ -6,10 +6,11 @@ import CronometroStyles from "./CronometroStyle.module.scss"
 import Relogio from "./Relogio"
 
 interface Props {
-    selecionado:Atividade | undefined
+    selecionado:Atividade | undefined,
+    finalizarAtividade:(atividade:Atividade) => void
 }
 
-const Cronometro = ({selecionado}:Props) => {
+const Cronometro = ({selecionado, finalizarAtividade}:Props) => {
 
     const [novoTempo, setNovoTempo] = useState<number>(0)
 
@@ -17,17 +18,23 @@ const Cronometro = ({selecionado}:Props) => {
         setNovoTempo(Tempo.tempoTotal(selecionado?.tempo))
     },[selecionado])
 
-    function comecar () {
+    function comecar (contador:number) {
         setTimeout(() => {
-            setNovoTempo((valorAntigo) => valorAntigo - 1)
-            comecar();
+            if(contador > 0){
+                setNovoTempo(contador - 1)
+                return comecar(contador - 1);
+            }
+            if(selecionado) {
+                finalizarAtividade(selecionado);
+            }
+
         }, 1000);
     }
 
     return (
         <div className={CronometroStyles.cronometro}>
             <Relogio label="Tempo" valorRelogio={novoTempo}/>
-            <Botao clicado={comecar}>Começar</Botao>
+            <Botao clicado={()=>comecar(novoTempo)}>Começar</Botao>
         </div>
     )
 }

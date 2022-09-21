@@ -1,5 +1,7 @@
 export interface Atividade {
     nome:string,
     tempo:string,
-    selecionado:boolean
+    selecionado:boolean,
+    completado:boolean,
+    id:string
 }

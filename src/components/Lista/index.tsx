@@ -3,20 +3,22 @@ import Item from "./Item";
 import ListaStyles from "./ListaStyles.module.scss"
 
 interface Props {
-    atividades:Array<Atividade>, 
-    selecionado:Atividade | undefined,
-    setSelecionado:React.Dispatch<React.SetStateAction<Atividade | undefined>>
+    atividades:Array<Atividade>,
+    selecionarAtividade:(atividade:Atividade) => void
 }
 
 
-const Lista = ({atividades, selecionado, setSelecionado}:Props) => {
+const Lista = ({atividades, selecionarAtividade}:Props) => {
     return(
-
-        <ul className={ListaStyles.Lista}>
-            {atividades.map((atividade, index)=>{
-                return(<Item key={index} atividade={atividade} selecionado={selecionado} setSelecionado={setSelecionado}/>);
-            })}
-        </ul>
+        <>
+            <ul className={ListaStyles.Lista}>
+                <h1>Lista de Atividades</h1>
+                <span></span>
+                {atividades.map((atividade, index)=>{
+                    return(<Item key={index} atividade={atividade} selecionarAtividade={selecionarAtividade}/>);
+                })}
+            </ul>
+        </>
     )
 }
 
